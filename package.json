@@ -1,0 +1,26 @@
+{
+  "name": "wi-jit",
+  "version": "1.0.0",
+  "description": "A tiny little set of functional starters.",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel --plugins transform-es2015-modules-commonjs main.js > index.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/i-am-tom/wi-jit"
+  },
+  "keywords": [
+    "functional",
+    "library",
+    "tiny"
+  ],
+  "author": "Tom Harding <tomjharding@live.co.uk> (http://tjh.io/)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
+    "tape": "^4.6.0"
+  }
+}
