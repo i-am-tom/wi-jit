@@ -1,6 +1,6 @@
 {
   "name": "wi-jit",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A tiny little set of functional starters.",
   "main": "index.js",
   "scripts": {

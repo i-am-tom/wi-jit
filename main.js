@@ -8,6 +8,10 @@ export const apply = f => x => f (x)
 //+ compose :: (b -> c) -> (a -> b) -> a -> c
 export const compose = f => g => x => f (g (x))
 
+//- Ignore the second argument.
+//+ K :: a -> b -> a
+export const constant = x => _ => x
+
 //- Compose a number of functions together.
 export const composeN = (f, ... fs) =>
   fs.reduce(uncurry(compose), f)
@@ -37,10 +41,6 @@ export const flip = f => x => y => f (y) (x)
 //- Return the input.
 //+ id :: a -> a
 export const id = x => x
-
-//- Ignore the second argument.
-//+ K :: a -> b -> a
-export const K = x => _ => x
 
 //- Transform two arguments, then run a function on them.
 //+ on :: (b -> b -> c) -> (a -> b) -> a -> a -> c

@@ -19,6 +19,10 @@ compose :: (b -> c) -> (a -> b) -> a -> c
 ```
 
 ```haskell
+constant :: a -> b -> a
+```
+
+```haskell
 curry :: ((a, b) -> c) -> a -> b -> c
 ```
 
@@ -28,10 +32,6 @@ flip :: (a -> b -> c) -> b -> a -> c
 
 ```haskell
 id :: a -> a
-```
-
-```haskell
-constant :: a -> b -> a
 ```
 
 ```haskell
