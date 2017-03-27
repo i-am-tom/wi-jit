@@ -21,6 +21,7 @@ export const composeN = (f, ... fs) =>
 export const curry = f => a => b => f (a, b)
 
 //- Curry a function with any number of args.
+//- Behaves as any "regular" curry library.
 export const curryN = f => {
   const length = f.length
 
@@ -57,6 +58,5 @@ export const uncurryN = f => {
     return f
 
   return (... xs) => uncurryN(
-    xs.reduce(uncurry(apply), f)
-  )
+    xs.reduce((f, x) => f(x), f))
 }
