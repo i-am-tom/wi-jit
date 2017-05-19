@@ -16,11 +16,16 @@ const compose = exports.compose = f => g => x => f(g(x));
 //- Compose a number of functions together.
 const composeN = exports.composeN = (f, ...fs) => fs.reduce(uncurry(compose), f);
 
+//- Ignore the second argument.
+//+ K :: a -> b -> a
+const K = exports.K = x => _ => x;
+
 //- Curry a binary function.
 //+ curry :: ((a, b) -> c) -> a -> b -> c
 const curry = exports.curry = f => a => b => f(a, b);
 
 //- Curry a function with any number of args.
+//- Behaves as any "regular" curry library.
 const curryN = exports.curryN = f => {
   const length = f.length;
 
@@ -41,13 +46,13 @@ const flip = exports.flip = f => x => y => f(y)(x);
 //+ id :: a -> a
 const id = exports.id = x => x;
 
-//- Ignore the second argument.
-//+ K :: a -> b -> a
-const K = exports.K = x => _ => x;
-
 //- Transform two arguments, then run a function on them.
 //+ on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
 const on = exports.on = f => g => x => y => f(g(x))(g(y));
+
+//- Left-to-right function composition.
+//+ pipe :: (a -> b) -> (b -> c) -> a -> c
+const pipe = exports.pipe = f => g => x => g(f(x));
 
 //- Uncurry a binary curried function.
 //+ uncurry :: (a -> b -> c) -> (a, b) -> c
@@ -58,6 +63,6 @@ const uncurry = exports.uncurry = f => (a, b) => f(a)(b);
 const uncurryN = exports.uncurryN = f => {
   if (typeof f !== 'function') return f;
 
-  return (...xs) => uncurryN(xs.reduce(uncurry(apply), f));
+  return (...xs) => uncurryN(xs.reduce((f, x) => f(x), f));
 };
 

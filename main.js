@@ -8,13 +8,13 @@ export const apply = f => x => f (x)
 //+ compose :: (b -> c) -> (a -> b) -> a -> c
 export const compose = f => g => x => f (g (x))
 
-//- Ignore the second argument.
-//+ K :: a -> b -> a
-export const constant = x => _ => x
-
 //- Compose a number of functions together.
 export const composeN = (f, ... fs) =>
   fs.reduce(uncurry(compose), f)
+
+//- Ignore the second argument.
+//+ K :: a -> b -> a
+export const K = x => _ => x
 
 //- Curry a binary function.
 //+ curry :: ((a, b) -> c) -> a -> b -> c
@@ -46,6 +46,10 @@ export const id = x => x
 //- Transform two arguments, then run a function on them.
 //+ on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
 export const on = f => g => x => y => f (g (x)) (g (y))
+
+//- Left-to-right function composition.
+//+ pipe :: (a -> b) -> (b -> c) -> a -> c
+export const pipe = f => g => x => g (f (x))
 
 //- Uncurry a binary curried function.
 //+ uncurry :: (a -> b -> c) -> (a, b) -> c

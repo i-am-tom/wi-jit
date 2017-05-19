@@ -144,6 +144,22 @@ test('on', assert => {
   assert.end()
 })
 
+test('pipe', assert => {
+  assert.same(
+    widget.pipe(x => x + 2)
+               (x => x / 3)(4),
+    2,
+    'Runs chain')
+
+  assert.same(
+    widget.pipe(x => x + 2)
+               (x => y => x / y)(4)(2),
+    3,
+    'Works with partials')
+
+  assert.end()
+})
+
 test('uncurry', assert => {
   assert.same(
     widget.uncurry(x => y => x + y)
