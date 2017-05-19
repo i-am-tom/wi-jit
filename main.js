@@ -8,13 +8,13 @@ export const apply = f => x => f (x)
 //+ compose :: (b -> c) -> (a -> b) -> a -> c
 export const compose = f => g => x => f (g (x))
 
-//- Ignore the second argument.
-//+ K :: a -> b -> a
-export const constant = x => _ => x
-
 //- Compose a number of functions together.
 export const composeN = (f, ... fs) =>
   fs.reduce(uncurry(compose), f)
+
+//- Ignore the second argument.
+//+ K :: a -> b -> a
+export const K = x => _ => x
 
 //- Curry a binary function.
 //+ curry :: ((a, b) -> c) -> a -> b -> c

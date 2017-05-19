@@ -39,6 +39,10 @@ on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
 ```
 
 ```haskell
+pipe :: (a -> b) -> (b -> c) -> a -> c
+```
+
+```haskell
 uncurry :: (a -> b -> c) -> (a, b) -> c
 ```
 
