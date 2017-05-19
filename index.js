@@ -49,6 +49,10 @@ const K = exports.K = x => _ => x;
 //+ on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
 const on = exports.on = f => g => x => y => f(g(x))(g(y));
 
+//- Left-to-right function composition.
+//+ pipe :: (a -> b) -> (b -> c) -> a -> c
+const pipe = exports.pipe = f => g => x => g (f (x))
+
 //- Uncurry a binary curried function.
 //+ uncurry :: (a -> b -> c) -> (a, b) -> c
 const uncurry = exports.uncurry = f => (a, b) => f(a)(b);
@@ -60,4 +64,3 @@ const uncurryN = exports.uncurryN = f => {
 
   return (...xs) => uncurryN(xs.reduce(uncurry(apply), f));
 };
-

@@ -47,6 +47,10 @@ export const id = x => x
 //+ on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
 export const on = f => g => x => y => f (g (x)) (g (y))
 
+//- Left-to-right function composition.
+//+ pipe :: (a -> b) -> (b -> c) -> a -> c
+export const pipe = f => g => x => g (f (x))
+
 //- Uncurry a binary curried function.
 //+ uncurry :: (a -> b -> c) -> (a, b) -> c
 export const uncurry = f => (a, b) => f (a) (b)
