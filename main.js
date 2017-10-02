@@ -51,6 +51,10 @@ export const on = f => g => x => y => f (g (x)) (g (y))
 //+ pipe :: (a -> b) -> (b -> c) -> a -> c
 export const pipe = f => g => x => g (f (x))
 
+//- Perform left-to-right function composition on a number of functions.
+export const pipeN = (f, ...fs) =>
+  fs.reduce(uncurry(pipe), f)
+
 //- Uncurry a binary curried function.
 //+ uncurry :: (a -> b -> c) -> (a, b) -> c
 export const uncurry = f => (a, b) => f (a) (b)

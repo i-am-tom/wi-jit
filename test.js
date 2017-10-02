@@ -160,6 +160,24 @@ test('pipe', assert => {
   assert.end()
 })
 
+test('pipeN', assert => {
+  assert.same(
+    widget.pipeN(x => x % 5,
+                 x => x + 2,
+                 x => x / 3)(9),
+    2,
+    'Runs chain')
+
+  assert.same(
+    widget.pipeN(x => x % 5,
+                 x => x + 2,
+                 x => y => x / y)(9)(2),
+    3,
+    'Works with partials')
+
+  assert.end()
+})
+
 test('uncurry', assert => {
   assert.same(
     widget.uncurry(x => y => x + y)
