@@ -56,6 +56,12 @@ There are also some helpful variations on these functions included to be a bit b
 composeN(f, g, h) == compose(compose(f, g), h)
 ```
 
+- `pipeN`: takes any number of functions and composes them all together using left-to-right function composition.
+
+```javascript
+pipeN(f, g, h) == pipe(pipe(f, g), h)
+```
+
 - `curryN`:  take an n-ary function, and return a totally curried version (unlike standard `curry`, which only works on binary functions).
 
 ```javascript
